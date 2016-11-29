@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+
+.superior {
+	background-color: #307CC2;
+	height: 80px;
+	padding-left: 270px;
+	font-family: Arial;
+	font-size: 50px;
+	color:white;
+	
+}
+.superior img{
+	width: 70px;
+	height: 70px;
+}
+
+.contato {
+	padding: 5px;
+}
+
+#cadastrar{
+	padding-top: 5px;
+}

@@ -1,0 +1,80 @@
+@CHARSET "ISO-8859-1";
+
+.container{
+	width: 840px;
+	
+}
+
+.barra-superior{
+	background-color: #307CC2;
+	height: 80px;
+	padding-left: 270px;
+	font-family: Arial;
+	font-size: 50px;
+	color:white;
+}
+
+.barra-superior img{
+	width: 80px;
+	height: 70px;
+}
+
+.titulo{
+	font-family: arial;
+}
+
+.navbar-brand img{
+	width: 50px;
+	height: 50px;
+}
+
+.img-principal{
+	padding-top: 50px;
+	width: 500px;
+	height: 500px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#uf{
+	width: 50%;
+}
+#password{
+	width: 50%;
+}
+.form-control{
+	width: 50%;
+}
+.form-principal{
+	border: solid 1px #787866;
+	padding: 5px;
+	background-color: #DADADA;
+}
+.radio{
+	display: inline-block;
+}
+footer{
+	
+	height: 50px;
+	background-color: #DADADA;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	
+}
+footer img{
+
+	width: 80px;
+	height: 80px;
+
+}
+
+.logoHome{
+	width: 550px;
+	height: 450px;
+	margin-left: 450px;
+}
+.separador{
+	height: 80px;
+
+}
