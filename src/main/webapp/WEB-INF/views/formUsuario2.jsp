@@ -91,10 +91,8 @@
 			<form:form servletRelativeAction="/agendapsf/deletarUsuario">
 				<div>
 					<label>Usuário Buscado</label>
-					<select name="procedimento.id" class="form-control">
-						<c:forEach items="${usuar}" var="user">
-							<option value="${user.id}">${user.id} - ${user.nomeUsuario} </option>
-						</c:forEach>
+					<select name="id" class="form-control">
+							<option value="${usuarios.id}">${usuarios.nomeUsuario } </option>
 					</select> 
 				</div>
 				<div>

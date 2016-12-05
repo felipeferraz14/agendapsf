@@ -26,9 +26,11 @@ public class UsuarioController {
 	@RequestMapping("formUsuario")
 	public ModelAndView form(){
 		List<PostoSaude> postos = postosaudeDAO.listar();
+		List<Usuario> usuarios = usuarioDAO.listarUsuarios();
 		ModelAndView mv = new ModelAndView("formUsuario");
 		mv.addObject("UF", UF.values());
 		mv.addObject("postos", postos);
+		mv.addObject("usuarios", usuarios);
 		return mv;
 	}
 	
@@ -46,23 +48,33 @@ public class UsuarioController {
 		return mv ;
 	}
 	
-	@RequestMapping("deletarusuario")
-	public String deletar(String cartao){
-		
-		// verificar cartão se é de algum usuário
+	@RequestMapping("buscarUsuario")
+	public ModelAndView buscarUsuario(String cartao ){
+		Usuario usuarioselecionado = new Usuario();
 		List<Usuario> usuarios = usuarioDAO.listarUsuarios();
+		ModelAndView mv = new ModelAndView("formUsuario2");
 		
+
 		for (Usuario usuario : usuarios) {
 			if (usuario.getCartSUS().equals(cartao)){
-				System.out.println("usuario encontrado!" + usuario.getNomeUsuario());
-				usuarioDAO.deletar(usuario); 
-				return "deletado"; 
-			} else {
-				System.out.println("usuario não encontrado!");
+				usuarioselecionado = usuario;
+				System.out.println("usuario encontrado!" + usuarioselecionado.getNomeUsuario());
+					mv.addObject("usuarios", usuarioselecionado);
 				
 			}
 		}
-		return "formUsuario"; 
+		
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping("deletarUsuario")
+	public String deletar(Usuario usuario){
+		System.out.println("deletando.....");
+		System.out.println(usuario.getId());
+		usuarioDAO.deletar(usuario); 
+		return "deletado"; 
 	}
 	
 	

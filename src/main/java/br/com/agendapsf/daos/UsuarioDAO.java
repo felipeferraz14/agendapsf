@@ -34,7 +34,7 @@ public class UsuarioDAO {
 	}
 
 	public void deletar(Usuario usuario) {
-		manager.createQuery("Delete from Usuario p where p.cartSUS =  " + usuario.getCartSUS());
+		manager.createQuery("Delete from Usuario p where id =" + usuario.getId()).executeUpdate();
 	}
 
 
