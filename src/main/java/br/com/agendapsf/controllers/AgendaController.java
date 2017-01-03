@@ -72,6 +72,22 @@ public class AgendaController {
 	
 	}
 	
+	@RequestMapping("/listaAgendas")
+	public ModelAndView listarAgendas(){
+		List<Agenda> agendas = agendaDAO.listar();
+		ModelAndView mv = new ModelAndView("listaAgendas");
+		System.out.println(agendas.size());
+		mv.addObject("agendas", agendas);
+		return mv;
+	}
+	
+	@RequestMapping("/deletarAgenda")
+	public String deletarAgenda(Agenda agenda){
+		System.out.println(agenda.getId());
+		agendaDAO.deletar(agenda);
+		return "deletado";
+		
+	}
 
 	
 	

@@ -22,25 +22,30 @@
 	<section class="container">
 		<fieldset>
 			<legend>Cadastro de Usuário</legend>
-			<form:form servletRelativeAction="/agendapsf/usuario" method="POST">
+			<form:form servletRelativeAction="/agendapsf/usuario" method="POST" commandName="usuario">
+			
 				<div>
-					<label>Nome</label> <input type="text" class="form-control"
-						placeholder="Nome do usuário" name="nomeUsuario">
+					<label>Nome</label> 
+					<input type="text" class="form-control" placeholder="Nome do usuário" name="nomeUsuario" value="${usuario.nomeUsuario }"/>	
+					 <form:errors class="alert alert-danger" role="alert" path="nomeUsuario"/>	
+					 
 				</div>
 				<div>
-					<label>Cartão SUS</label> <input type="text" class="form-control"
-						name="cartSUS">
+					<label>Cartão SUS</label> 
+					<input type="text" class="form-control"	name="cartSUS" value="${usuario.cartSUS }" />
+					<form:errors path="cartSUS"/>	
 				</div>
 				<div>
 					<label>Endereço</label> <input type="text" class="form-control"
-						name="enderecoUsuario">
+						name="enderecoUsuario" value="${usuario.enderecoUsuario }">
 				</div>
 				<div>
 					<label>Cidade</label> <input type="text" class="form-control"
-						name="cidadeUsuario">
+						name="cidadeUsuario" value="${usuario.cidadeUsuario }">
 				</div>
 				<div>
-					<label>Estado</label> <select name="UF" class="form-control"
+					<label>Estado</label> 
+					<select name="UF" class="form-control"
 						id="uf">
 						<c:forEach items="${UF}" var="UF">
 							<option value="${UF}">${UF}</option>
@@ -49,14 +54,15 @@
 				</div>
 				<div class="contato">
 					<label>Telefone</label> <input type="text" name="telefone"
-						placeholder="73 3291-9092">
+						placeholder="73 3291-9092" value="${usuario.telefone }">
 				</div>
 				<div class="contato">
 					<label>Celular</label> <input type="text" name="celular"
-						placeholder="73 999998888">
+						placeholder="73 999998888" value="${usuario.celular }">
 				</div>
 				<div>
-					<label>Posto de Saúde</label> <select name="postosaude.id"
+					<label>Posto de Saúde</label> 
+					<select name="postosaude.id"
 						class="form-control">
 						<c:forEach items="${postos}" var="posto">
 							<option value="${posto.id}">${posto.nomePsf}</option>
@@ -88,19 +94,6 @@
 						<button type="submit" class="btn btn-primary" >Buscar</button>
 					</div>
 				</form:form>
-			<form:form servletRelativeAction="/agendapsf/deletarUsuario">
-				<div>
-					<label>Usuário Buscado</label>
-					<select name="procedimento.id" class="form-control">
-						<c:forEach items="${usuar}" var="user">
-							<option value="${user.id}">${user.id} - ${user.nomeUsuario} </option>
-						</c:forEach>
-					</select> 
-				</div>
-				<div>
-					<button type="submit" class="btn btn-primary" >Deletar</button>
-				</div>
-			</form:form>
 		</fieldset>
 		
 		

@@ -48,8 +48,6 @@
 						${user.authorities }<a></a>
 					</div>
 					</security:authorize>
-					
-
 					<div>
 						<label>Cartão SUS</label>
 						<security:authentication property="principal.cartSUS" />

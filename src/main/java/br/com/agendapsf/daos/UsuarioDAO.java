@@ -37,5 +37,22 @@ public class UsuarioDAO {
 		manager.createQuery("Delete from Usuario p where id =" + usuario.getId()).executeUpdate();
 	}
 
+	public boolean comparar(Usuario usuario) {
+		
+		List<Usuario> result = manager.createQuery("select p from Usuario p ", Usuario.class).getResultList();
+		
+		for (Usuario usuario2 : result)
+			if(usuario2.getCartSUS().equals(usuario.getCartSUS())){
+				return  true;
+				}
+			 	return false;			
+	}
+
+	public void atualizar(Usuario usuario) {
+		// TODO Auto-generated method stub
+		manager.merge(usuario);
+		
+	}
+
 
 }

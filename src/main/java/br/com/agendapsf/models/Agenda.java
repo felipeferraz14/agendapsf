@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Future;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,6 +23,7 @@ public class Agenda {
 	@OneToOne
 	private Procedimento procedimento;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Future
 	private Date dataAtendimento;
 	@OneToOne
 	private Usuario usuario;

@@ -5,6 +5,13 @@
 	
 }
 
+.containeredit{
+	position:relative;
+	width: 400px;
+	
+}
+
+
 .barra-superior{
 	background-color: #307CC2;
 	height: 80px;
@@ -45,6 +52,9 @@
 .form-control{
 	width: 50%;
 }
+.maioredit{
+	width: 100%;
+}
 .form-principal{
 	border: solid 1px #787866;
 	padding: 5px;
@@ -77,4 +87,18 @@ footer img{
 .separador{
 	height: 80px;
 
+}
+
+.input_falso{
+	width: 30px;
+	border: none;
+}
+
+.editdelet{
+	position: relative;
+	float: left;
+}
+
+#editar{
+	padding-left: 4px;
 }

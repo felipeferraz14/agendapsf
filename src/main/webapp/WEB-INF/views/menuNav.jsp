@@ -33,13 +33,13 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li><a href="/agendapsf/formAgenda">Agendamento</a></li>
+		        <li><a href="/agendapsf/listaAgendas">Meus Agendamentos</a></li>
 		        <li><a href="/agendapsf/eventos">Eventos</a></li>
 		        <li><a href="/agendapsf/unidades">Unidades de atendimento</a></li>
 
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
 		        <li class="dropdown">
-		     	<security:authorize access="hasAnyRole('ROLE_ADMIN')">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
 		          <ul class="dropdown-menu">		   
 		          	<li><a href="/agendapsf/formEventos">Eventos</a></li>         
@@ -47,7 +47,6 @@
 		            <li><a href="/agendapsf/formPsf">Unidades</a></li>
 		            <li><a href="/agendapsf/formUsuario">Usuários</a></li>
 		          </ul>
-		         </security:authorize>
 		       
 		        </li>
 		        <li class="dropdown">
