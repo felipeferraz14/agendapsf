@@ -29,21 +29,20 @@ public class JPAConfiguration {
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
 		
+		
 		 DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		 dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-				 
-		 URI dbUrl = new URI( environment.getProperty("DATABASE_URL"));
-		 
-		 dataSource.setUrl("jdbc:mysql://"+dbUrl.getHost()+":"+dbUrl.getPort()+dbUrl.getPath());		 
-		 dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
-		 dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
-		 
+		 dataSource.setDriverClassName("com.postgresql.jdbc.Driver");
+		 URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
+
+	    dataSource.setUrl("jdbc:postgresql://"+dbUrl.getHost()+":"+dbUrl.getPort()+dbUrl.getPath());
+	    dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
+	    dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
 		
 		 
 		 factoryBean.setDataSource(dataSource);
 		 
 		 Properties properties = new Properties();
-		 properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+		 properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 	     properties.setProperty("hibernate.show_sql", "true");
 	     properties.setProperty("hibernate.hbm2ddl.auto", "update");
 	     
