@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,33 +26,40 @@ public class JPAConfiguration {
 	private Environment environment;
 	
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws URISyntaxException{
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Properties addProperties) throws URISyntaxException{
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
-		
-		
-		 DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		 dataSource.setDriverClassName("org.postgresql.Driver");
-		 URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
+		factoryBean.setDataSource(dataSource);
+	
+	    factoryBean.setJpaProperties(addProperties);
+	    factoryBean.setPackagesToScan("br.com.agendapsf.models");
+	     
+	     return factoryBean;
+	}
+	
+	@Bean
+	public DataSource datasource() throws URISyntaxException {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		 
+		URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
 
 	    dataSource.setUrl("jdbc:postgresql://"+dbUrl.getHost()+":"+dbUrl.getPort()+dbUrl.getPath());
 	    dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
 	    dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
-		
-		 
-		 factoryBean.setDataSource(dataSource);
-		 
-		 Properties properties = new Properties();
-		 properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-	     properties.setProperty("hibernate.show_sql", "true");
-	     properties.setProperty("hibernate.hbm2ddl.auto", "update");
-	     
-	     factoryBean.setJpaProperties(properties);
-	     factoryBean.setPackagesToScan("br.com.agendapsf.models");
-	     
-	     return factoryBean;
+	    
+	    return dataSource;
+	}
+
+	@Bean	
+	public Properties addProperties() {
+		Properties props = new Properties();
+		props.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+	    props.setProperty("hibernate.show_sql", "true");
+	    props.setProperty("hibernate.hbm2ddl.auto", "update");
+		return props;
 	}
 	
 	@Bean
