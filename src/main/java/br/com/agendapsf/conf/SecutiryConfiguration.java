@@ -21,6 +21,7 @@ public class SecutiryConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/views/formUsuario").permitAll()
 		.antMatchers("/imagens/**").permitAll()
 		.antMatchers("/resources/**").permitAll()
+		.antMatchers("/url-magica-jifhdaiucaiudjaiosd342cdsoicks").permitAll()
 		.anyRequest().authenticated()
 	    .and().formLogin().loginPage("/login").permitAll()
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
