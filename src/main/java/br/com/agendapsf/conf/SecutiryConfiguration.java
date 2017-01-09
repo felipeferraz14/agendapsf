@@ -12,8 +12,8 @@ import br.com.agendapsf.daos.LoginDAO;
 @EnableWebMvcSecurity
 public class SecutiryConfiguration extends WebSecurityConfigurerAdapter{
 	
-	@Autowired
-	private LoginDAO usuarioDAO;
+//	@Autowired
+//	private LoginDAO usuarioDAO;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -26,10 +26,10 @@ public class SecutiryConfiguration extends WebSecurityConfigurerAdapter{
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(usuarioDAO);
-		/*.passwordEncoder(new BCryptPasswordEncoder());*/
-	}
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(usuarioDAO);
+//		/*.passwordEncoder(new BCryptPasswordEncoder());*/
+//	}
 
 }
