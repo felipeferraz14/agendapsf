@@ -16,6 +16,12 @@ public class PostoSaude {
 	private String cidadePsf;
 	private UF UF;
 	
+	public PostoSaude() {
+	}
+	public PostoSaude(int i){
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
