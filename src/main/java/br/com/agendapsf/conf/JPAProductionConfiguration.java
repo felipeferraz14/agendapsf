@@ -15,19 +15,23 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Profile("prod")
 public class JPAProductionConfiguration {
 	
-	@Autowired
-	private Environment environment;
+//	@Autowired
+//	private Environment environment;
 	
 	@Bean
 	public DataSource dataSource() throws URISyntaxException {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		 
-		URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
+//		URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
+		
+		String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        String username = System.getenv("JDBC_DATABASE_USERNAME");
+        String password = System.getenv("JDBC_DATABASE_PASSWORD");
 
-	    dataSource.setUrl("jdbc:postgresql://"+dbUrl.getHost()+":"+dbUrl.getPort()+dbUrl.getPath());
-	    dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
-	    dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
+	    dataSource.setUrl(dbUrl);
+	    dataSource.setUsername(username);
+	    dataSource.setPassword(password);
 	    
 	    return dataSource;
 	}

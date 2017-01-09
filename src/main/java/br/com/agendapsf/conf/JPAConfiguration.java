@@ -22,6 +22,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Profile("dev")
 public class JPAConfiguration {
 	
+	@Autowired
+	private Environment environment;
+	
+	
+	
 	
 	
 	@Bean
@@ -40,7 +45,9 @@ public class JPAConfiguration {
 	
 	@Bean
 	@Profile("dev")
-	public DataSource dataSource() {
+	public DataSource dataSource(){
+		
+		
 		
 		 DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		    dataSource.setUsername("root");
