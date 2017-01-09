@@ -28,6 +28,7 @@ public class LoginController {
 		return "home";
 	}
 	
+	@Transactional
 	@ResponseBody
 	@RequestMapping("/url-magica-jifhdaiucaiudjaiosd342cdsoicks")
 	public String urlMagicaLogin(){
@@ -40,9 +41,7 @@ public class LoginController {
 		usuariodao.gravar(usuario); 
 		
 		return "Usuário Inserido com Sucesso";
-		
-		
-		
+
 		
 	}
 	
