@@ -19,11 +19,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
-
+@Profile("dev")
 public class JPAConfiguration {
 	
-	@Autowired
-	private Environment environment;
+	
 	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Properties addProperties) throws URISyntaxException{
@@ -40,23 +39,23 @@ public class JPAConfiguration {
 	}
 	
 	@Bean
-	public DataSource datasource() throws URISyntaxException {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		 
-		URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
-
-	    dataSource.setUrl("jdbc:postgresql://"+dbUrl.getHost()+":"+dbUrl.getPort()+dbUrl.getPath());
-	    dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
-	    dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
-	    
-	    return dataSource;
+	@Profile("dev")
+	public DataSource dataSource() {
+		
+		 DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		    dataSource.setUsername("root");
+		    dataSource.setPassword("");
+		    dataSource.setUrl("jdbc:mysql://localhost:3306/agendapsf");
+		    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		    
+		    return dataSource;
 	}
 
 	@Bean	
+	@Profile("dev")
 	public Properties addProperties() {
 		Properties props = new Properties();
-		props.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+		props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 	    props.setProperty("hibernate.show_sql", "true");
 	    props.setProperty("hibernate.hbm2ddl.auto", "update");
 		return props;
