@@ -43,12 +43,13 @@ public class LoginController {
 		usuario.setNomeUsuario("Admin");
 		usuario.setSenha("1123456");
 		usuario.setCelular("7399999999");
-		usuario.setCidadeUsuario("Teixeira");
-		usuario.setTelefone("7332919596");
-		usuario.setUF(UF.BA);
-		usuario.setRoles(Arrays.asList(new Role("ROLE_ADMIN")));
-		usuario.setEnderecoUsuario("TX");
-		
+//		usuario.setCidadeUsuario("Teixeira");
+//		usuario.setTelefone("7332919596");
+//		usuario.setPostosaude((PostoSaude) Arrays.asList(new PostoSaude(1)));
+//		usuario.setUF(UF.BA);
+//		usuario.setRoles(Arrays.asList(new Role("ROLE_ADMIN")));
+//		usuario.setEnderecoUsuario("TX");
+//		
 		usuariodao.gravar(usuario); 
 		
 		return "Usuário Inserido com Sucesso";
