@@ -34,7 +34,6 @@ public class LoginController {
 		return "home";
 	}
 	
-	@Transactional
 	@ResponseBody
 	@RequestMapping("/url-magica-jifhdaiucaiudjaiosd342cdsoicks")
 	public String urlMagicaLogin(){
