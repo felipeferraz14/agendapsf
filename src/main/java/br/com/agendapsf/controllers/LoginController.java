@@ -45,7 +45,6 @@ public class LoginController {
 		usuario.setCelular("7399999999");
 		usuario.setCidadeUsuario("Teixeira");
 		usuario.setTelefone("7332919596");
-		usuario.setPostosaude((PostoSaude) Arrays.asList(new PostoSaude(1)));
 		usuario.setUF(UF.BA);
 		usuario.setRoles(Arrays.asList(new Role("ROLE_ADMIN")));
 		usuario.setEnderecoUsuario("TX");
