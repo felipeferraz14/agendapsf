@@ -45,9 +45,10 @@ public class JPAConfiguration {
 	
 	@Bean
 	@Profile("dev")
-	public DataSource dataSource(){
+	public DataSource dataSource() throws URISyntaxException{
 		
 		 DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
 		    dataSource.setUsername("root");
 		    dataSource.setPassword("");
 		    dataSource.setUrl("jdbc:mysql://localhost:3306/agendapsf");
