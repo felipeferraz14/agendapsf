@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
-@Profile("dev")
+//@Profile("dev")
 public class JPAConfiguration {
 	
 	@Bean
@@ -34,7 +34,7 @@ public class JPAConfiguration {
 	}
 	
 	@Bean
-	@Profile("dev")
+//	@Profile("dev")
 	public DataSource dataSource() throws URISyntaxException{
 		
 		 DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -48,7 +48,7 @@ public class JPAConfiguration {
 	}
 
 	@Bean	
-	@Profile("dev")
+//	@Profile("dev")
 	public Properties addProperties() {
 		Properties props = new Properties();
 		props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");

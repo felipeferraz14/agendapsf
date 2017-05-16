@@ -13,14 +13,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import br.com.agendapsf.daos.UsuarioDAO;
 
 
 
 @Entity
 public class Usuario implements UserDetails {
 	
+
+
 	/**
 	 * 
 	 */
@@ -43,6 +48,8 @@ public class Usuario implements UserDetails {
 	private PostoSaude postosaude;
 	private String telefone;
 	private String celular;
+
+
 	
 	
 	public PostoSaude getPostosaude() {
@@ -140,8 +147,8 @@ public class Usuario implements UserDetails {
 		return true;
 	}
 	
-
-	
-	
+	public String toString() {
+		return this.nomeUsuario +" - " + this.getCartSUS() + " - " + this.getId();	
+		}
 
 }

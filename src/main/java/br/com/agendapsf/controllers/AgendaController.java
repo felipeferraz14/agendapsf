@@ -21,6 +21,7 @@ public class AgendaController {
 	
 	@Autowired
 	private AgendaDAO agendaDAO;
+	
 	@Autowired
 	private ProcedimentoDAO procedimentoDAO;
 		

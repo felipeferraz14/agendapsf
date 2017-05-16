@@ -19,12 +19,14 @@ public class LoginDAO implements UserDetailsService {
 	private EntityManager manager;
 		
 	public UserDetails loadUserByUsername(String cartSUS){
-		List<Usuario> usuarios = manager.createQuery("select p from Usuario p where p.cartSUS = :cartSUS", Usuario.class)
-				.setParameter("cartSUS", cartSUS).getResultList();
-		if(usuarios.isEmpty()){
+		Usuario usuario = manager.createQuery("select p from Usuario p where p.cartSUS = :cartSUS", Usuario.class)
+				.setParameter("cartSUS", cartSUS).getSingleResult();
+		System.out.println("nullo");
+		if(usuario == null){
+			System.out.println("nullo");
 			throw new UsernameNotFoundException("Cartão SUS: "+ cartSUS +" não foi encontrado");
 		} else {
-			return usuarios.get(0);
+			return usuario;
 		}
 		
 	}
